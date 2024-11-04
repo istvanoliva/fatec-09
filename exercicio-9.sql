@@ -45,3 +45,50 @@ CASE
     ELSE
         RAISE NOTICE 'O número % não é múltiplo de 3 nem de 5', valor;
 END CASE;
+
+-- Exercício 1.3 - Operações de acordo com o menu
+op := valor_aleatorio_entre(1, 4);  -- Gera uma operação aleatória entre 1 e 4
+op1 := valor_aleatorio_entre(1, 100);
+op2 := valor_aleatorio_entre(1, 100);
+-- Usando IF
+RAISE NOTICE 'Exercício 1.3 - IF: Operação escolhida: %', op;
+IF op = 1 THEN
+    resultado := op1 + op2;
+    RAISE NOTICE '% + % = %', op1, op2, resultado;
+ELSIF op = 2 THEN
+    resultado := op1 - op2;
+    RAISE NOTICE '% - % = %', op1, op2, resultado;
+ELSIF op = 3 THEN
+    resultado := op1 * op2;
+    RAISE NOTICE '% * % = %', op1, op2, resultado;
+ELSE
+    IF op2 != 0 THEN
+        resultado := op1 / op2::NUMERIC;
+        RAISE NOTICE '% / % = %', op1, op2, resultado;
+    ELSE
+        RAISE NOTICE 'Divisão por zero não permitida';
+    END IF;
+END IF;
+
+-- Usando CASE
+RAISE NOTICE 'Exercício 1.3 - CASE: Operação escolhida: %', op;
+CASE op
+    WHEN 1 THEN
+        resultado := op1 + op2;
+        RAISE NOTICE '% + % = %', op1, op2, resultado;
+    WHEN 2 THEN
+        resultado := op1 - op2;
+        RAISE NOTICE '% - % = %', op1, op2, resultado;
+    WHEN 3 THEN
+        resultado := op1 * op2;
+        RAISE NOTICE '% * % = %', op1, op2, resultado;
+    WHEN 4 THEN
+        IF op2 != 0 THEN
+            resultado := op1 / op2::NUMERIC;
+            RAISE NOTICE '% / % = %', op1, op2, resultado;
+        ELSE
+            RAISE NOTICE 'Divisão por zero não permitida';
+        END IF;
+    ELSE
+        RAISE NOTICE 'Opção inválida';
+END CASE;
