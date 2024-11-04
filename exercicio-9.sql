@@ -7,3 +7,22 @@ END;
 $$ LANGUAGE plpgsql;
 
 DO $$
+
+-- Exercício 1.1 - Verificar se um número é múltiplo de 3
+-- Usando IF
+valor := valor_aleatorio_entre(1, 100);
+RAISE NOTICE 'Exercício 1.1 - IF: O valor gerado é: %', valor;
+IF valor % 3 = 0 THEN
+    RAISE NOTICE 'O número % é múltiplo de 3', valor;
+ELSE
+    RAISE NOTICE 'O número % não é múltiplo de 3', valor;
+END IF;
+-- Usando CASE
+valor := valor_aleatorio_entre(1, 100);
+RAISE NOTICE 'Exercício 1.1 - CASE: O valor gerado é: %', valor;
+CASE
+    WHEN valor % 3 = 0 THEN
+        RAISE NOTICE 'O número % é múltiplo de 3', valor;
+    ELSE
+        RAISE NOTICE 'O número % não é múltiplo de 3', valor;
+END CASE;
