@@ -26,3 +26,22 @@ CASE
     ELSE
         RAISE NOTICE 'O número % não é múltiplo de 3', valor;
 END CASE;
+
+-- Exercício 1.2 - Verificar se um número é múltiplo de 3 ou de 5
+-- Usando IF
+valor := valor_aleatorio_entre(1, 100);
+RAISE NOTICE 'Exercício 1.2 - IF: O valor gerado é: %', valor;
+IF valor % 3 = 0 OR valor % 5 = 0 THEN
+    RAISE NOTICE 'O número % é múltiplo de 3 ou de 5', valor;
+ELSE
+    RAISE NOTICE 'O número % não é múltiplo de 3 nem de 5', valor;
+END IF;
+-- Usando CASE
+valor := valor_aleatorio_entre(1, 100);
+RAISE NOTICE 'Exercício 1.2 - CASE: O valor gerado é: %', valor;
+CASE
+    WHEN valor % 3 = 0 OR valor % 5 = 0 THEN
+        RAISE NOTICE 'O número % é múltiplo de 3 ou de 5', valor;
+    ELSE
+        RAISE NOTICE 'O número % não é múltiplo de 3 nem de 5', valor;
+END CASE;
