@@ -92,3 +92,26 @@ CASE op
     ELSE
         RAISE NOTICE 'Opção inválida';
 END CASE;
+
+-- Exercício 1.4 - Cálculo do valor de venda com base no lucro
+valor_compra := valor_aleatorio_entre(1, 100) + RANDOM();  -- Valor aleatório com parte decimal
+-- Usando IF
+RAISE NOTICE 'Exercício 1.4 - IF: Valor de compra: R$ %', valor_compra;
+IF valor_compra < 20 THEN
+    valor_venda := valor_compra * 1.45;
+ELSE
+    valor_venda := valor_compra * 1.30;
+END IF;
+RAISE NOTICE 'Valor de venda (IF): R$ %', valor_venda;
+-- Usando CASE
+RAISE NOTICE 'Exercício 1.4 - CASE: Valor de compra: R$ %', valor_compra;
+CASE
+    WHEN valor_compra < 20 THEN
+        valor_venda := valor_compra * 1.45;
+    ELSE
+        valor_venda := valor_compra * 1.30;
+END CASE;
+RAISE NOTICE 'Valor de venda (CASE): R$ %', valor_venda;
+
+END;
+$$;
